@@ -1,0 +1,70 @@
+*{
+    font-family: 'Lexend', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 400;
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+}
+
+.gridContainer{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "sideBar header"
+        "sideBar mainContent";
+    height: 100vh;
+}
+
+.sideBar{
+    grid-area: sideBar;
+    display:flex;
+    flex-direction: column;
+    gap: 3rem;
+    background-color: #160F29;
+    padding-top: 2rem;
+    padding-left: 2rem;
+}
+
+.sideBarUpper{
+    color: white;
+    font-size: 36px;
+}
+
+.sideBarMiddle{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: white;
+    font-size: 20px;
+}
+
+.sideBarLower{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: white;
+    font-size: 20px;
+}
+
+.sideBarContainer{
+    display: flex;
+    gap: 0.75rem;
+}
+
+.sideBarContainer svg{
+    fill: white;
+    height: 1.5rem;
+    width: auto;
+}
+
+.header{
+    grid-area: header;
+}
+
+.mainContent{
+    grid-area: mainContent;
+}
+
