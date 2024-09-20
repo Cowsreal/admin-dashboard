@@ -99,6 +99,7 @@ html, body{
     border-radius: 0.4rem;
     padding-left: 0.4rem;
     box-sizing: border-box;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .search input::placeholder{
@@ -112,6 +113,17 @@ html, body{
     border: 1px solid #F3DFC1;
     border-radius: 1rem;
     background-color: #368F8B;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+#searchButton svg{
+    transition: fill 0.3s ease;
+}
+
+#searchButton:hover,
+.sideBarContainer:hover,
+.user div svg{
+    cursor: pointer;
 }
 
 .user{
@@ -154,6 +166,15 @@ html, body{
     height: 1.6rem;
 }
 
+.actionButtons button:hover{
+    outline: none;
+    background-color: #18444a;
+    box-shadow: 0 0 10px #00ffcc, 0 0 40px #009b7c, 0 0 80px #00765f;
+    border: 2px solid #00ffcc; 
+    color: #00ffcc;
+    cursor: pointer;
+}
+
 .mainContent{
     grid-area: mainContent;
     background-color: #DDBEA8;
@@ -177,6 +198,11 @@ html, body{
     grid-area: profiles;
 }
 
+.profilesSection > div:first-child{
+    margin-bottom: 1rem;
+    font-size: 18px;
+}
+
 .profiles{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -187,6 +213,8 @@ html, body{
     height: 30rem;
     display: grid;
     grid-auto-rows: 75% 25%;
+    background-color: #F3DFC1;
+    overflow-y: scroll;
 }
 
 .profPic{
@@ -218,8 +246,8 @@ html, body{
     opacity: 1;
 }
 
-.profInfo p{
-    margin: 0.2rem;
+.profInfo{
+    padding: 1rem;
 }
 
 .profName{
@@ -239,7 +267,16 @@ html, body{
     grid-area: announcements;
 }
 
+.announcementsSection > div:first-child{
+    margin-bottom: 1rem;
+    font-size: 18px;
+}
+
 .recommendedSection{
     grid-area: recommended;
 }
 
+.recommendedSection > div:first-child{
+    margin-bottom: 1rem;
+    font-size: 18px;
+}
