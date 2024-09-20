@@ -6,7 +6,7 @@
 html, body{
     margin: 0;
     padding: 0;
-    background-color: #F3DFC1;
+    background-color: #DDBEA8;
 }
 
 .gridContainer{
@@ -40,6 +40,14 @@ html, body{
     height: 5rem;
     width: auto;
     fill: white;
+}
+
+.stickySideBar{
+    display:flex;
+    flex-direction: column;
+    gap: 3rem;
+    position: -webkit-sticky;
+    top: 2rem;
 }
 
 .sideBarMiddle{
@@ -95,11 +103,32 @@ html, body{
     width: 20rem;
     height: 2rem;
     background-color: #368F8B;
-    border: 1px solid #b6ab87;
+    border: 1px solid #276764;
     border-radius: 0.4rem;
     padding-left: 0.4rem;
     box-sizing: border-box;
-    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    transition: box-shadow 0.5s ease, background-color 0.5s ease;
+    box-shadow: 0.15rem 0.15rem 0.7rem rgba(0, 0, 0, 0.5);
+}
+
+.search input::-webkit-input-placeholder{
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.search input::-moz-placeholder{
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.search input:-ms-input-placeholder{
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.search input::-ms-input-placeholder{
+    color: #ffffff;
+    font-size: 14px;
 }
 
 .search input::placeholder{
@@ -110,14 +139,16 @@ html, body{
 #searchButton{
     height: 2rem;
     width: 2rem;
-    border: 1px solid #F3DFC1;
+    border: 1px solid #276764;
     border-radius: 1rem;
     background-color: #368F8B;
-    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0.15rem 0.15rem 0.7rem rgba(0, 0, 0, 0.5);
+    transition: box-shadow 0.5s ease, background-color 0.5s ease;
 }
 
 #searchButton svg{
-    transition: fill 0.3s ease;
+    fill:#F3DFC1;
+    transition: fill 0.5s ease;
 }
 
 #searchButton:hover,
@@ -152,27 +183,22 @@ html, body{
     font-size: 30px;
 }
 
-.actionButtons{
+#actionButtons{
     display: flex;
     justify-content: center;
     gap: 0.8rem;
 }
 
-.actionButtons button{
+#actionButtons button{
     background-color: #368F8B;
-    border: 1px solid #276966;
+    border: 1px solid #276764;
     border-radius: 0.5rem;
     width: 4rem;
     height: 1.6rem;
-}
-
-.actionButtons button:hover{
-    outline: none;
-    background-color: #18444a;
-    box-shadow: 0 0 10px #00ffcc, 0 0 40px #009b7c, 0 0 80px #00765f;
-    border: 2px solid #00ffcc; 
-    color: #00ffcc;
+    transition: box-shadow 0.5s ease, background-color 0.5s ease;
     cursor: pointer;
+    color: white;
+    box-shadow: 0.15rem 0.15rem 0.7rem rgba(0, 0, 0, 0.5);
 }
 
 .mainContent{
@@ -180,22 +206,14 @@ html, body{
     background-color: #DDBEA8;
     display: grid;
     grid-template-columns: 3fr 1fr;
-    grid-template-rows: auto auto;
-    grid-template-areas:
-        "profiles announcements"
-        "profiles recommended"
-        "profiles recommended"
-        "profiles recommended"
-        "profiles recommended";
+    grid-template-rows: repeat(5, auto);
     grid-gap: 1rem;
     padding: 1rem;
 }
-.mainContent div{
-    /* border: 1px solid black; */
-}
 
 .profilesSection{
-    grid-area: profiles;
+    grid-column: 1;
+    grid-row: 1 / 5;
 }
 
 .profilesSection > div:first-child{
@@ -214,11 +232,14 @@ html, body{
     display: grid;
     grid-auto-rows: 75% 25%;
     background-color: #F3DFC1;
+    box-shadow: 0.2rem 0.2rem 0.7rem rgba(0, 0, 0, 0.5);
+    border-radius: 0.5rem;
     overflow-y: scroll;
 }
 
 .profPic{
     position: relative;
+    cursor: pointer;
 }
 
 .profPic:hover .origProfPic{
@@ -233,12 +254,13 @@ html, body{
 
 .origProfPic,
 .hoverProfPic{
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: opacity 0.75s ease, visibility 0.75s ease;
     position: absolute;
     height: 100%;
     width: 100%;
     top: 0;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
 }
 
 .profPic:hover .hoverProfPic{
@@ -250,21 +272,22 @@ html, body{
     padding: 1rem;
 }
 
-.profName{
+.profName, .accouncementsContainer > div{
     font-weight: 700;
 }
 
-.profDesc{
+.profDesc, .announcementTitle{
     font-weight: 400;
 }
 
-.profLoc{
+.profLoc, .announcementMessage{
     font-weight: 200;
     font-size: 14px;
 }
 
 .announcementsSection{
-    grid-area: announcements;
+    grid-column: 2;
+    grid-row: 1;
 }
 
 .announcementsSection > div:first-child{
@@ -272,11 +295,82 @@ html, body{
     font-size: 18px;
 }
 
+.accouncementsContainer{
+    display: flex;
+    flex-direction: column;
+    height: 20rem;
+    padding: 1rem;
+    background-color: #F3DFC1;
+    box-shadow: 0.2rem 0.2rem 0.7rem rgba(0, 0, 0, 0.5);
+    border-radius: 0.5rem;
+    overflow-y: scroll;
+}
+
+.announcementList{
+    margin-top: 0.5rem;
+    list-style-type: none;
+    padding: 0.5rem;
+}
+
+.announcementList li{
+    position: relative;
+    padding-left: 20px;
+}
+
+.announcementList li::before{
+    content: '-';
+    position: absolute;
+    left: 0;
+    color: #000;
+}
+
+.announcementTitle{
+    font-weight: 400;
+}
+
 .recommendedSection{
-    grid-area: recommended;
+    grid-column: 2;
+    grid-row: 2;
 }
 
 .recommendedSection > div:first-child{
     margin-bottom: 1rem;
     font-size: 18px;
+}
+
+.recommendedContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 25rem;
+    padding: 1rem;
+    background-color: #F3DFC1;
+    box-shadow: 0.2rem 0.2rem 0.7rem rgba(0, 0, 0, 0.5);
+    border-radius: 0.5rem;
+}
+
+.recommendedProfile{
+    flex-grow: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.recommendedPic{
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 50%;
+}
+
+.recommendedPic img{
+    position: absolute;
+    width: 100%;
+    height: auto;
+    -o-object-fit: cover;
+       object-fit: cover;
+    top: 50%;
+    left: 50%;
+    transform: translate(-60%, -25%) scale(1.5);
 }
