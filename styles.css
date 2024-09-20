@@ -6,6 +6,7 @@
 html, body{
     margin: 0;
     padding: 0;
+    background-color: #F3DFC1;
 }
 
 .gridContainer{
@@ -23,14 +24,22 @@ html, body{
     display:flex;
     flex-direction: column;
     gap: 3rem;
-    background-color: #160F29;
+    background-color: #361160;
     padding-top: 2rem;
     padding-left: 2rem;
 }
 
 .sideBarUpper{
+    display: flex;
+    align-content: center;
     color: white;
-    font-size: 36px;
+    font-size: 40px;
+}
+
+.sideBarUpper div svg{
+    height: 5rem;
+    width: auto;
+    fill: white;
 }
 
 .sideBarMiddle{
@@ -62,9 +71,175 @@ html, body{
 
 .header{
     grid-area: header;
+    padding-top: 2rem;
+    padding-left: 1rem;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
+    background-color: #F3DFC1;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.headerTop{
+    display: flex;
+    justify-content: space-between;
+}
+
+.search form{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.search input{
+    width: 20rem;
+    height: 2rem;
+    background-color: #368F8B;
+    border: 1px solid #b6ab87;
+    border-radius: 0.4rem;
+    padding-left: 0.4rem;
+    box-sizing: border-box;
+}
+
+.search input::placeholder{
+    color: #ffffff;
+    font-size: 14px;
+}
+
+#searchButton{
+    height: 2rem;
+    width: 2rem;
+    border: 1px solid #F3DFC1;
+    border-radius: 1rem;
+    background-color: #368F8B;
+}
+
+.user{
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.user div svg{
+    height: 2rem;
+    width: auto;
+}
+
+.user div{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.headerBottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.welcome{
+    font-size: 30px;
+}
+
+.actionButtons{
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+.actionButtons button{
+    background-color: #368F8B;
+    border: 1px solid #276966;
+    border-radius: 0.5rem;
+    width: 4rem;
+    height: 1.6rem;
 }
 
 .mainContent{
     grid-area: mainContent;
+    background-color: #DDBEA8;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "profiles announcements"
+        "profiles recommended"
+        "profiles recommended"
+        "profiles recommended"
+        "profiles recommended";
+    grid-gap: 1rem;
+    padding: 1rem;
+}
+.mainContent div{
+    /* border: 1px solid black; */
+}
+
+.profilesSection{
+    grid-area: profiles;
+}
+
+.profiles{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 1rem;
+}
+
+.profiles > div{
+    height: 30rem;
+    display: grid;
+    grid-auto-rows: 75% 25%;
+}
+
+.profPic{
+    position: relative;
+}
+
+.profPic:hover .origProfPic{
+    opacity: 0;
+    visibility: hidden;
+}
+
+.hoverProfPic{
+    opacity: 0;
+    visibility: hidden;
+}
+
+.origProfPic,
+.hoverProfPic{
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    object-fit: cover;
+}
+
+.profPic:hover .hoverProfPic{
+    visibility: visible;
+    opacity: 1;
+}
+
+.profInfo p{
+    margin: 0.2rem;
+}
+
+.profName{
+    font-weight: 700;
+}
+
+.profDesc{
+    font-weight: 400;
+}
+
+.profLoc{
+    font-weight: 200;
+    font-size: 14px;
+}
+
+.announcementsSection{
+    grid-area: announcements;
+}
+
+.recommendedSection{
+    grid-area: recommended;
 }
 
